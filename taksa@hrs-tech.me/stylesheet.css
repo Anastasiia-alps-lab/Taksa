@@ -1,3 +1,7 @@
+/* SPDX-FileCopyrightText: 2026 Anastasiia-alps-lab
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
 /* Panel indicator with the current percentage. */
 .taksa-indicator {
     font-weight: bold;
