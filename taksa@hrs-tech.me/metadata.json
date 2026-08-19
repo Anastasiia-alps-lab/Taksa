@@ -1,0 +1,15 @@
+{
+  "uuid": "taksa@hrs-tech.me",
+  "name": "Taksa",
+  "description": "A dachshund burrows across your screen as the Claude Code usage limit runs out. The share of the dog sticking out of the top-right corner is the share of the limit already spent; the rest of it is still visible at the bottom left. The panel indicator shows the same number in percent.\n\nUsage data is read from JSON files in ~/.local/state/taksa/, written by the bundled statusline-taksa.sh hook. The extension makes no network requests.",
+  "url": "https://github.com/Anastasiia-alps-lab/Taksa",
+  "shell-version": [
+    "45",
+    "46",
+    "47",
+    "48",
+    "49",
+    "50"
+  ],
+  "version-name": "1.0.0"
+}

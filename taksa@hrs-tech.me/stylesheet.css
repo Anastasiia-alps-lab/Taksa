@@ -1,0 +1,9 @@
+/* Panel indicator with the current percentage. */
+.taksa-indicator {
+    font-weight: bold;
+    padding: 0 4px;
+}
+
+/* .taksa-frame and .taksa-figure carry no styling of their own: the frame is a
+   plain clipping box and the figure is either a background image or a drawing.
+   Both keep a style class so a theme can hook into them. */
