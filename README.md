@@ -1,6 +1,6 @@
 # Taksa
 
-Taksa is a small GNOME Shell extension that tracks Claude Code usage limits.
+Taksa is a small GNOME Shell extension that tracks Claude Code usage limits. It works with a Pro or Max subscription only.
 
 As the usage limit runs out, the dachshund gradually emerges from the top-right corner of the screen, taking up more and more space.
 
