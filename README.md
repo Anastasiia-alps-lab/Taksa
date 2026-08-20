@@ -9,7 +9,7 @@ The extension is published on GNOME Extensions: https://extensions.gnome.org/ext
 ## Demo
 
 <p align="center">
-  <img src="assets/demo.gif" alt="Taksa_demo" width="700">
+  <img src="assets/demo01.mp4" alt="Taksa_demo" width="700">
 </p>
 
 ## Requirements
