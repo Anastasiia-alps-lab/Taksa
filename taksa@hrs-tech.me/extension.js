@@ -24,6 +24,9 @@
 import Clutter from 'gi://Clutter';
 import GLib from 'gi://GLib';
 import Gio from 'gi://Gio';
+/* The pixbuf loader, not the Gdk toolkit: it only reads the width and
+ * height out of the taksa.png header. Gdk, Gtk and Adw are never imported —
+ * they would clash with Clutter inside the Shell process. */
 import GdkPixbuf from 'gi://GdkPixbuf';
 import Shell from 'gi://Shell';
 import St from 'gi://St';
@@ -350,9 +353,13 @@ class Taksa {
         this._bottomFigure = null;
         this._topFigure = null;
 
+        /* Destroying the button takes the label with it, but the static
+         * checker on extensions.gnome.org cannot see that through add_child(),
+         * so the child is destroyed explicitly first. */
+        this._indicatorLabel?.destroy();
+        this._indicatorLabel = null;
         this._indicator?.destroy();
         this._indicator = null;
-        this._indicatorLabel = null;
 
         this._percent = null;
     }
