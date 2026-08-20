@@ -106,6 +106,12 @@ While a test value is set it overrides the live numbers, so the dog stays put no
 
 Taksa is still early. Found a bug or have an idea: open an issue.
 
+## Support
+
+Taksa is free and stays free. If the dog earned its keep, you can buy it a treat:
+
+[![Sponsor](https://img.shields.io/badge/sponsor-%E2%9D%A4-db61a2?style=flat)](https://donatr.ee/anastasiia-alps/)
+
 ## License
 
 GPL-3.0
