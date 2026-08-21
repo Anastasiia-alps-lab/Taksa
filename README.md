@@ -1,6 +1,6 @@
 # Taksa
 
-Taksa is a small GNOME Shell extension that tracks Claude Code usage limits. It works with a Pro or Max subscription only.
+Taksa tracks Claude Code usage limits. It works with a Pro or Max subscription only, and comes as a GNOME Shell extension and a macOS menu bar app.
 
 As the usage limit runs out, the dachshund gradually emerges from the top-right corner of the screen, taking up more and more space.
 
@@ -14,7 +14,7 @@ The extension is published on GNOME Extensions: https://extensions.gnome.org/ext
 
 ## Requirements
 
-- GNOME Shell 43 or newer
+- GNOME Shell 43 or newer, or macOS 13 Ventura or newer
 - `jq`
 - Claude Code
 
@@ -27,7 +27,19 @@ git clone https://github.com/Anastasiia-alps-lab/Taksa.git
 cd Taksa
 ```
 
-Check which GNOME Shell you are on, the next step depends on it:
+On macOS, build the app and put it in `/Applications`:
+
+```bash
+cd macos
+./build-app.sh --install
+open /Applications/Taksa.app
+```
+
+It needs the Xcode command line tools (`xcode-select --install`) and nothing
+else. See [macos/README.md](macos/README.md) for the details, then carry on with
+[Usage](#usage) below — the rest is the same on both systems.
+
+On GNOME, check which Shell you are on, the next step depends on it:
 
 ```bash
 gnome-shell --version
@@ -39,7 +51,7 @@ For GNOME Shell 45 and newer:
 
 ```bash
 mkdir -p ~/.local/share/gnome-shell/extensions
-cp -r taksa@hrs-tech.me ~/.local/share/gnome-shell/extensions/
+cp -r taksa@alps ~/.local/share/gnome-shell/extensions/
 ```
 
 For GNOME Shell 43 and 44 the build is a separate one, put it together first:
@@ -47,7 +59,7 @@ For GNOME Shell 43 and 44 the build is a separate one, put it together first:
 ```bash
 ./build-legacy.sh
 mkdir -p ~/.local/share/gnome-shell/extensions
-cp -r taksa-legacy@hrs-tech.me ~/.local/share/gnome-shell/extensions/
+cp -r taksa-legacy@alps ~/.local/share/gnome-shell/extensions/
 ```
 
 Restart the shell so it picks up the new folder. On X11 press `Alt+F2`, type `r` and press Enter. On Wayland log out and log back in.
@@ -55,14 +67,14 @@ Restart the shell so it picks up the new folder. On X11 press `Alt+F2`, type `r`
 Turn the extension on:
 
 ```bash
-gnome-extensions enable taksa@hrs-tech.me
+gnome-extensions enable taksa@alps
 ```
 
-On GNOME 43 and 44 the name is `taksa-legacy@hrs-tech.me`.
+On GNOME 43 and 44 the name is `taksa-legacy@alps`.
 
 ## Usage
 
-The extension does not talk to Claude Code by itself. The numbers come from a status line hook that Claude Code runs on every message.
+Taksa does not talk to Claude Code by itself. The numbers come from a status line hook that Claude Code runs on every message. The same hook feeds the GNOME extension and the macOS app.
 
 Put the hook somewhere on your disk:
 
@@ -83,11 +95,11 @@ Add it to `~/.claude/settings.json`:
 }
 ```
 
-Start Claude Code and send anything. The hook prints the limits in the terminal and writes them to `~/.local/state/taksa/claude-code.json`. The extension watches that folder and moves the dog.
+Start Claude Code and send anything. The hook prints the limits in the terminal and writes them to `~/.local/state/taksa/claude-code.json`. Taksa watches that folder and moves the dog.
 
-The dog itself is the scale. Whatever sticks out of the top-right corner is the share already spent; the rest is still lying in the bottom-left corner. The panel shows the same number in percent. Two limits are counted, the five hour one and the seven day one, and the bigger of the two wins.
+The dog itself is the scale. Whatever sticks out of the top-right corner is the share already spent; the rest is still lying in the bottom-left corner. The GNOME panel and the macOS menu bar show the same number in percent. Two limits are counted, the five hour one and the seven day one, and the bigger of the two wins.
 
-Until the first reading arrives nothing is drawn and the panel shows a dash. That is not zero, it only means there is no data yet.
+Until the first reading arrives nothing is drawn and the indicator shows a dash. That is not zero, it only means there is no data yet.
 
 To see how it looks without waiting for real usage:
 

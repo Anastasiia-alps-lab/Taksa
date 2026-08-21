@@ -21,8 +21,8 @@ export LC_ALL=C
 
 STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/taksa"
 STATE_FILE="$STATE_DIR/test.json"
-# The extension only reads *.json, so a "disabled" test file simply sits next to
-# the others under a different suffix: the value is kept but ignored.
+# Taksa only reads *.json, so a "disabled" test file simply sits next to the
+# others under a different suffix: the value is kept but ignored.
 OFF_FILE="$STATE_FILE.off"
 
 usage() {
